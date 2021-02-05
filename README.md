@@ -4,7 +4,11 @@ New mongodb databases, users, passwords are created by MongoShell.
 It is based on the `terraform-aws-documentdb-cluster` Terraform module to provision a DocumentDB cluster on AWS.
 https://registry.terraform.io/modules/cloudposse/documentdb-cluster/aws/latest, https://github.com/cloudposse/terraform-aws-documentdb-cluster
 
-* Please set the values below before usage:
+1) Please set environments below up:
+```
+export AWS_ACCESS_KEY_ID=<Your_AWS_ACCESS_KEY_ID> && export AWS_SECRET_ACCESS_KEY=<Your_AWS_SECRET_ACCESS_KEY>
+```
+2) Please set the values below before usage:
 ```
   `variables.tf`:
   - master_usr				# claster endpoint username
@@ -23,8 +27,8 @@ https://registry.terraform.io/modules/cloudposse/documentdb-cluster/aws/latest, 
   - allowed_security_groups 		# if change is required
   - allowed_cidr_blocks 		# you can whitelist needfull IPs here.
 ```
- * Module modifications: TLS is disabled in `terraform-aws-documentdb-cluster/main.tf`. 
- * Please note that AWS DocumentDB is only avaiable from VPC. However, we are able to check created databases, users, roles from created for this case ec2 instance (jumpbox). After execution of `terraform apply` (ETA ~9min) we can check MongoDB databases and users from the mentioned jumpbox (please uncomment 41 line (ingress rule for whitelisting of 22 port) in the `vpc_subnet_gw_sg_route.tf` for it).
+ 3) Module modifications: TLS is disabled in `terraform-aws-documentdb-cluster/main.tf`. 
+ 4) Please note that AWS DocumentDB is only avaiable from VPC. However, we are able to check created databases, users, roles from created for this case ec2 instance (jumpbox). After execution of `terraform apply` (ETA ~9min) we can check MongoDB databases and users from the mentioned jumpbox (please uncomment 41 line (ingress rule for whitelisting of 22 port) in the `vpc_subnet_gw_sg_route.tf` for it).
 ```
 ubuntu@ip-xxx-xxx-xxx-xxx:~$ mongo --host <your_hostname>:27017 --username <your_username> --password <your_password>
 MongoDB shell version v3.6.22
