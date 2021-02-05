@@ -1,4 +1,4 @@
-# Terraform AWS DocumentDB-cluster. 
+# Terraform & AWS DocumentDB-cluster. 
 New mongodb databases, users, passwords are created by MongoShell.
 
 It is based on the `terraform-aws-documentdb-cluster` Terraform module to provision a DocumentDB cluster on AWS.
