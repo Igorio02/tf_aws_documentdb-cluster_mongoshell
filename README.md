@@ -25,7 +25,7 @@ export AWS_ACCESS_KEY_ID=<Your_AWS_ACCESS_KEY_ID> && export AWS_SECRET_ACCESS_KE
   - vpc_id                  		# if change is required
   - subnet_ids              		# if change is required
   - allowed_security_groups 		# if change is required
-  - allowed_cidr_blocks 		# you can whitelist needfull IPs here or adjust rules in `vpc_subnet_gw_sg_route.tf`.
+  - allowed_cidr_blocks 		# you can whitelist needful IPs here or adjust rules in `vpc_subnet_gw_sg_route.tf`.
 ```
  3) Module modifications: TLS is disabled in `terraform-aws-documentdb-cluster/main.tf`. 
  4) Please note that AWS DocumentDB is only avaiable from VPC. However, we are able to check created databases, users, roles from created for this case ec2 instance (jumpbox). After execution of `terraform apply` (ETA ~9min) we can check MongoDB databases and users from the mentioned jumpbox (please uncomment 41 line (ingress rule for whitelisting of 22 port) in the `vpc_subnet_gw_sg_route.tf` for it).
