@@ -68,7 +68,3 @@ resource "local_file" "service_private_key" {
 resource "aws_eip" "my_static_ip" {
   instance = aws_instance.service.id
 }
-
-output "ec2_public_ip_address" {
-  value = aws_eip.my_static_ip.public_ip
-}
