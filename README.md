@@ -28,8 +28,9 @@ export AWS_ACCESS_KEY_ID=<Your_AWS_ACCESS_KEY_ID> && export AWS_SECRET_ACCESS_KE
   - allowed_security_groups 		# if change is required
   - allowed_cidr_blocks 		# you can whitelist needful IPs here or adjust rules in `vpc_subnet_gw_sg_route.tf`.
 ```
- 4) Module modifications: TLS is disabled in `terraform-aws-documentdb-cluster/main.tf`. 
- 5) Terraform creates vpc, subnets, security group, gw, eip, route rules and DocumentDB cluster, ec2 instance (jumpbox). It connects to the endpoint of the cluster via the mongo shell from jumpbox (actions are described in the `ec2_instance_eip_mongoshell_script.tf`) and creates databases, users, passwords, roles. Jumpbox (ec2 instance) will be automatically turned off after that. Please note that AWS DocumentDB is only avaiable from VPC. However, we are able to check created databases, users, roles from created for this case ec2 instance (jumpbox). After execution of `terraform apply` (ETA ~9min) we can check MongoDB databases and users from the mentioned jumpbox (please uncomment 41 line (ingress rule for whitelisting of 22 port) in the `vpc_subnet_gw_sg_route.tf` for it).
+ 4) During `terraform plan` or `terraform apply` execution you have to set value for `var.master_passwd` (cluster endpoint password).
+ 5) Module modifications: TLS is disabled in `terraform-aws-documentdb-cluster/main.tf`. 
+ 6) Terraform creates vpc, subnets, security group, gw, eip, route rules and DocumentDB cluster, ec2 instance (jumpbox). It connects to the endpoint of the cluster via the mongo shell from jumpbox (actions are described in the `ec2_instance_eip_mongoshell_script.tf`) and creates databases, users, passwords, roles. Jumpbox (ec2 instance) will be automatically turned off after that. Please note that AWS DocumentDB is only avaiable from VPC. However, we are able to check created databases, users, roles from created for this case ec2 instance (jumpbox). After execution of `terraform apply` (ETA ~9min) we can check MongoDB databases and users from the mentioned jumpbox (please uncomment 41 line (ingress rule for whitelisting of 22 port) in the `vpc_subnet_gw_sg_route.tf` for it).
 ```
 ubuntu@ip-xxx-xxx-xxx-xxx:~$ mongo --host <your_hostname>:27017 --username <your_username> --password <your_password>
 MongoDB shell version v3.6.22
