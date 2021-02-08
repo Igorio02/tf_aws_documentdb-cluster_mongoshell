@@ -15,8 +15,3 @@ module "documentdb-cluster" {
   allowed_security_groups = [aws_security_group.sg_docdb.id]
   allowed_cidr_blocks     = ["172.32.0.0/16"]
 }
-
-output "endpoint" {
-  value       = module.documentdb-cluster.endpoint
-  description = "Endpoint of the DocumentDB cluster"
-}
