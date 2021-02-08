@@ -13,7 +13,6 @@ export AWS_ACCESS_KEY_ID=<Your_AWS_ACCESS_KEY_ID> && export AWS_SECRET_ACCESS_KE
 ```
   `variables.tf`:
   - master_usr				# claster endpoint username
-  - master_passwd			# claster endpoint password
   - database_name_{1,2,3}		# thera are 3 test dbs at the momment. You can change number of it.  
   - database_name_{1,2,3}_username	# thera are 3 test dbs_users at the momment. You can change number of it.
   - database_name_{1,2,3}_password	# thera are 3 test dbs_password at the momment. You can change number of it.
