@@ -1,9 +1,9 @@
 variable "master_usr" {
   default = "root"
-  }
+}
 variable "master_passwd" {
   default = "please_change_this_password_c73jUwtBf9ePLaq5"
-  }
+}
 #####################################################
 variable "database_name_1" {
   default = "db_1"

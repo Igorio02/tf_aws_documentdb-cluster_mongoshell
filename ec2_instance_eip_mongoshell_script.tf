@@ -15,12 +15,12 @@ data "aws_ami" "service" {
 }
 
 resource "aws_instance" "service" {
-  ami           = data.aws_ami.service.id
+  ami                    = data.aws_ami.service.id
   vpc_security_group_ids = [aws_security_group.sg_docdb.id]
-  subnet_id = aws_subnet.subnet_docdb_1.id
-  instance_type = "t2.micro"
-  key_name = aws_key_pair.service.key_name
-#  user_data = file("data.sh")
+  subnet_id              = aws_subnet.subnet_docdb_1.id
+  instance_type          = "t2.micro"
+  key_name               = aws_key_pair.service.key_name
+  #  user_data = file("data.sh")
   user_data = <<-EOT
 #!/bin/bash
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
@@ -42,8 +42,8 @@ sleep 10m
 poweroff
 EOT
   tags = {
-    Name  = "docdb"
-    }
+    Name = "docdb"
+  }
   depends_on = [module.documentdb-cluster]
 }
 
@@ -58,7 +58,7 @@ resource "aws_key_pair" "service" {
 }
 
 resource "local_file" "service_private_key" {
-  content = tls_private_key.service.private_key_pem
+  content  = tls_private_key.service.private_key_pem
   filename = aws_key_pair.service.key_name
   provisioner "local-exec" {
     command = "chmod 400 ${aws_key_pair.service.key_name}"
