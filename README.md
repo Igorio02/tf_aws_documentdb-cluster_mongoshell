@@ -8,7 +8,7 @@ https://registry.terraform.io/modules/cloudposse/documentdb-cluster/aws/latest, 
 ```
 export AWS_ACCESS_KEY_ID=<Your_AWS_ACCESS_KEY_ID> && export AWS_SECRET_ACCESS_KEY=<Your_AWS_SECRET_ACCESS_KEY>
 ```
-2) Please specify AWS region in the `settings_requirements.tf`.
+2) Please specify AWS region in the `versions.tf`.
 3) Please set the values below before usage:
 ```
   `variables.tf`:
