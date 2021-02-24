@@ -112,4 +112,4 @@ rs0:PRIMARY> show users
 	]
 }
 ```
-7) If you don't need to access jumpbox ec2 server lines 50-70 should be commented in the ec2_instance_eip_mongoshell_script.tf
+7) If you don't need to access jumpbox ec2 server, lines 50-70 should be commented in the ec2_instance_eip_mongoshell_script.tf
